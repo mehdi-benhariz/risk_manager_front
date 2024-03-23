@@ -13,10 +13,22 @@ export const MainMenu = ({ ...rest }) => {
   const { isAdmin } = useAccount();
   return (
     <Stack direction="row" spacing="1" {...rest}>
-      <MainMenuItem to="/">{t('layout:mainMenu.dashboard')}</MainMenuItem>
-      {isAdmin && (
+      {/* <MainMenuItem to="/">{t('layout:mainMenu.dashboard')}</MainMenuItem> */}
+      <MainMenuItem to="/actifsprimaires">Actifs Primaires</MainMenuItem>
+      <MainMenuItem to="/a">Actifs support</MainMenuItem>
+      <MainMenuItem to="/damagest">Dommages</MainMenuItem>
+      <MainMenuItem to="/a">Événements déclencheurs</MainMenuItem>
+      <MainMenuItem to="/a">Analyse de risque</MainMenuItem>
+      <MainMenuItem to="/a">Fiches de risque</MainMenuItem>
+      <MainMenuItem to="/a">Panorama</MainMenuItem>
+      <MainMenuItem to="/a">Scénarios</MainMenuItem>
+      <MainMenuItem to="/a">Gravité</MainMenuItem>
+      <MainMenuItem to="/a">Grilles de décision</MainMenuItem>
+      <MainMenuItem to="/a">Présentation</MainMenuItem>
+      <MainMenuItem to="/">Licence</MainMenuItem>
+      {/* {isAdmin && (
         <MainMenuItem to="/admin">{t('layout:mainMenu.admin')}</MainMenuItem>
-      )}
+      )} */}
     </Stack>
   );
 };

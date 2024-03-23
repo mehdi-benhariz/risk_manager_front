@@ -20,6 +20,12 @@ import PageDashboard from '@/features/dashboard/PageDashboard';
 import { Layout } from '@/layout/Layout';
 import { Loader } from '@/layout/Loader';
 
+const PageDamagest = dynamic(
+  () => import('@/features/PageDamages/PageDamages'),
+  {
+    loading: () => <Loader />,
+  }
+);
 const PageApiDocumentation = dynamic(
   () => import('@/features/api-documentation/PageApiDocumentation'),
   {
@@ -30,6 +36,12 @@ const PageApiDocumentation = dynamic(
 const PageUsers = dynamic(() => import('@/features/users/PageUsers'), {
   loading: () => <Loader />,
 });
+const PageActifsPrimaires = dynamic(
+  () => import('@/features/PageActifsPrimaires/PageActifsPrimaires'),
+  {
+    loading: () => <Loader />,
+  }
+);
 
 const PageUserCreate = dynamic(
   () => import('@/features/users/PageUserCreate'),
@@ -116,6 +128,14 @@ export const routes = [
           {
             path: '',
             element: <PageDashboard />,
+          },
+          {
+            path: 'actifsprimaires',
+            element: <PageActifsPrimaires />,
+          },
+          {
+            path: 'damagest',
+            element: <PageDamagest />,
           },
           {
             path: 'account',

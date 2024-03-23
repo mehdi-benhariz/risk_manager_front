@@ -60,20 +60,22 @@ export const TopBar = () => {
           bg="gray.800"
           _dark={{ bg: 'gray.900' }}
         >
-          <MenuButton display={{ base: 'flex', md: 'none' }} ms="-0.5rem" />
+          <MenuButton ms="-0.5rem" />
           <Box
             as={Link}
             to="/"
             mx={{ base: 'auto', [theme.layout.breakpoints.desktop]: 0 }}
           >
-            <Logo />
+            <Logo mt="8" />
           </Box>
-          <MainMenu me="auto" ms="4" display={{ base: 'none', md: 'flex' }} />
+          <Box me="auto" ms="4" display={{ base: 'none', md: 'flex' }} />
+          {/* <MainMenu me="auto" ms="4" display={{ base: 'none', md: 'flex' }} /> */}
           <AccountMenu />
         </Flex>
       </SlideFade>
       <Box h={theme.layout.topBar.height} />
-      {showDrawer && <NavDrawer />}
+      <NavDrawer />
+      {/* {showDrawer && <NavDrawer />} */}
     </>
   );
 };
