@@ -179,7 +179,7 @@ export const PageBottomBar = ({ children, ...rest }: FlexProps) => {
   );
 };
 
-type PageProps = FlexProps & {
+export type PageProps = FlexProps & {
   isFocusMode?: boolean;
   containerSize?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
   hideContainer?: boolean;

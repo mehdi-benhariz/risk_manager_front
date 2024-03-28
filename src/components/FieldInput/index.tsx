@@ -24,7 +24,7 @@ export type FieldInputProps<FormattedValue = string> = FieldProps<
     autoFocus?: boolean;
   };
 
-export const FieldInput = <FormattedValue = string,>(
+export const FieldInput = <FormattedValue = String>(
   props: FieldInputProps<FormattedValue>
 ) => {
   const {

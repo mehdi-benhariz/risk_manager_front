@@ -49,6 +49,13 @@ const PageActifsSupport = dynamic(
   }
 );
 
+const PageRiskAnalysis = dynamic(
+  () => import('@/features/RiskAnalysis/PageRiskAnalysis'),
+  {
+    loading: () => <Loader />,
+  }
+);
+
 const PageTriggerEvents = dynamic(
   () => import('@/features/trigger event/PageTriggerEvent'),
   {
@@ -150,6 +157,12 @@ export const routes = [
             path: 'actifssupport',
             element: <PageActifsSupport />,
           },
+
+          {
+            path: 'riskAnalysis',
+            element: <PageRiskAnalysis />,
+          },
+
           {
             path: 'triggerevents',
             element: <PageTriggerEvents />,

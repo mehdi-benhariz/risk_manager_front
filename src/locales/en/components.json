@@ -39,7 +39,7 @@
     "errorCode": "Error {{code}}",
     "default": {
       "title": "Error",
-      "description": "Something went wrong 😞"
+      "description": "Probably you should contact the developer 😞"
     }
   },
   "pagination": {

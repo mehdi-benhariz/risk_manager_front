@@ -18,14 +18,7 @@ export const MainMenu = ({ ...rest }) => {
       <MainMenuItem to="/actifssupport">Actifs support</MainMenuItem>
       <MainMenuItem to="/damagest">Dommages</MainMenuItem>
       <MainMenuItem to="/triggerevents">Trigger events</MainMenuItem>
-      <MainMenuItem to="/a">Analyse de risque</MainMenuItem>
-      <MainMenuItem to="/a">Fiches de risque</MainMenuItem>
-      <MainMenuItem to="/a">Panorama</MainMenuItem>
-      <MainMenuItem to="/a">Scénarios</MainMenuItem>
-      <MainMenuItem to="/a">Gravité</MainMenuItem>
-      <MainMenuItem to="/a">Grilles de décision</MainMenuItem>
-      <MainMenuItem to="/a">Présentation</MainMenuItem>
-      <MainMenuItem to="/">Licence</MainMenuItem>
+      <MainMenuItem to="/riskAnalysis">Analyse de risque</MainMenuItem>
       {/* {isAdmin && (
         <MainMenuItem to="/admin">{t('layout:mainMenu.admin')}</MainMenuItem>
       )} */}
