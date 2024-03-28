@@ -42,6 +42,19 @@ const PageActifsPrimaires = dynamic(
     loading: () => <Loader />,
   }
 );
+const PageActifsSupport = dynamic(
+  () => import('@/features/PageActifsSupport/PageActifsSupport'),
+  {
+    loading: () => <Loader />,
+  }
+);
+
+const PageTriggerEvents = dynamic(
+  () => import('@/features/trigger event/PageTriggerEvent'),
+  {
+    loading: () => <Loader />,
+  }
+);
 
 const PageUserCreate = dynamic(
   () => import('@/features/users/PageUserCreate'),
@@ -133,6 +146,15 @@ export const routes = [
             path: 'actifsprimaires',
             element: <PageActifsPrimaires />,
           },
+          {
+            path: 'actifssupport',
+            element: <PageActifsSupport />,
+          },
+          {
+            path: 'triggerevents',
+            element: <PageTriggerEvents />,
+          },
+
           {
             path: 'damagest',
             element: <PageDamagest />,

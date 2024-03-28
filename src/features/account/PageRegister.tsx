@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import {
   Alert,
@@ -27,14 +27,11 @@ import { Trans, useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { FieldInput } from '@/components/FieldInput';
-import { FieldSelect } from '@/components/FieldSelect';
 import { SlideIn } from '@/components/SlideIn';
 import { useToastError } from '@/components/Toast';
 import { useCreateAccount } from '@/features/account/service';
 import { DemoRegisterHint } from '@/features/demo-mode/DemoRegisterHint';
 import { User } from '@/features/users/schema';
-import { AVAILABLE_LANGUAGES } from '@/lib/i18n/constants';
-import { Language } from '@/lib/i18n/constants';
 
 export default function PageRegister() {
   const { t, i18n } = useTranslation(['common', 'account']);

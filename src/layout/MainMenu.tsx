@@ -15,9 +15,9 @@ export const MainMenu = ({ ...rest }) => {
     <Stack direction="row" spacing="1" {...rest}>
       {/* <MainMenuItem to="/">{t('layout:mainMenu.dashboard')}</MainMenuItem> */}
       <MainMenuItem to="/actifsprimaires">Actifs Primaires</MainMenuItem>
-      <MainMenuItem to="/a">Actifs support</MainMenuItem>
+      <MainMenuItem to="/actifssupport">Actifs support</MainMenuItem>
       <MainMenuItem to="/damagest">Dommages</MainMenuItem>
-      <MainMenuItem to="/a">Événements déclencheurs</MainMenuItem>
+      <MainMenuItem to="/triggerevents">Trigger events</MainMenuItem>
       <MainMenuItem to="/a">Analyse de risque</MainMenuItem>
       <MainMenuItem to="/a">Fiches de risque</MainMenuItem>
       <MainMenuItem to="/a">Panorama</MainMenuItem>
@@ -67,14 +67,14 @@ const MainMenuItem = ({ to, ...rest }: BoxProps & { to: string }) => {
         },
       }}
       _after={{
-        opacity: isActive ? 1 : 0,
+        opacity: isActive ? 0.5 : 0,
         content: '""',
         position: 'absolute',
         insetStart: { base: 8, md: '50%' },
         bottom: '0.2em',
         transform: rtlValue('translateX(-50%)', 'translateX(50%)'),
         transition: '0.2s',
-        w: isActive ? '2rem' : 0,
+        w: isActive ? '70%' : 0,
         h: '2px',
         borderRadius: 'full',
         bg: 'currentColor',

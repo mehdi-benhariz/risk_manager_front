@@ -5,6 +5,7 @@ import {
   Heading,
   LinkBox,
   Stack,
+  Switch,
   Text,
 } from '@chakra-ui/react';
 import { use } from 'chai';
@@ -39,34 +40,21 @@ const ImpactLevel = ({ level }: { level: string }) => {
 export default function PageActifsSupport() {
   const actifsSupport = useActifsSupportList();
   return (
-    <Page containerSize="xl">
+    <Page containerSize="lg">
       <PageContent>
         <Heading size="md" mb="4">
-          Actifs Primaires
+          Actifs Support
         </Heading>
-        <Text color="gray.600">
-          concernés par le dysfonctionnement décrit ci-dessous
-        </Text>
+
         <DataList>
           <DataListHeader isVisible={{ base: false, md: true }}>
-            <DataListCell colName="type">Type d'actifs</DataListCell>
-            <DataListCell colName="code" colWidth="4rem">
-              Code
+            <DataListCell colName="element">Element</DataListCell>
+            <DataListCell colName="name">Nom</DataListCell>
+            <DataListCell colName="actType">
+              Types d'actifs support
             </DataListCell>
-            <DataListCell
-              colName="description"
-              isVisible={{ base: false, md: true }}
-            >
-              Description des actifs
-            </DataListCell>
-            <DataListCell
-              colName="complementary_description"
-              isVisible={{ base: false, md: true }}
-            >
-              Complément de description
-            </DataListCell>
-            <DataListCell colName="niveauxdimpact">
-              Niveaux d'impact
+            <DataListCell colName="isSelected" colWidth="10rem">
+              Sélection{' '}
             </DataListCell>
           </DataListHeader>
 
@@ -83,30 +71,23 @@ export default function PageActifsSupport() {
 
           {actifsSupport?.data?.map((actif) => (
             <DataListRow as={LinkBox} key={actif.id}>
-              <DataListCell colName="type" colWidth="auto">
-                {actif?.actif_type || ''}
+              <DataListCell colName="element">{actif.element}</DataListCell>
+
+              <DataListCell colName="name" colWidth="auto">
+                {actif?.name}
               </DataListCell>
-              <DataListCell colName="code">
-                <Badge>{actif?.code || ''}</Badge>
+              <DataListCell colName="actType">
+                <Text>{actif?.actif_type}</Text>
               </DataListCell>
-              <DataListCell
-                colName="description"
-                isVisible={{ base: false, md: true }}
-              >
-                <Text color="gray.600" fontSize="md">
-                  {actif?.description || ''}
-                </Text>
-              </DataListCell>
-              <DataListCell
-                colName="complementary_description"
-                isVisible={{ base: false, md: true }}
-              >
-                <Text color="gray.600" fontSize="md">
-                  {actif?.complementary_description || ''}
-                </Text>
-              </DataListCell>
-              <DataListCell colName="niveauxdimpact">
-                <ImpactLevel level={actif.impact_level} />
+              <DataListCell colName="isSelected" alignItems="center" gap="2">
+                <Switch
+                  colorScheme="blue"
+                  defaultChecked={actif.isSelected}
+                  isDisabled
+                />
+                <Badge colorScheme={!!actif.isSelected ? 'blue' : 'gray'}>
+                  {actif.isSelected ? 'Sélectionné' : 'Non sélectionné'}
+                </Badge>
               </DataListCell>
             </DataListRow>
           ))}

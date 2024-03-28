@@ -14,7 +14,7 @@ type DamagestType = {
   name: string;
   damage_type: string;
   comment: string;
-  selection: string;
+  isSelected: boolean;
 };
 
 export const useDamagestList = (
@@ -31,7 +31,7 @@ export const useDamagestList = (
           name: faker.lorem.words(8),
           damage_type: faker.lorem.words(3),
           comment: faker.lorem.words(7),
-          selection: faker.lorem.words(3),
+          isSelected: faker.datatype.boolean(),
         }))
       )
     //    Axios.get('/damage/'),

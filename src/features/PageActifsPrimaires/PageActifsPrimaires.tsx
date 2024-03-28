@@ -63,7 +63,11 @@ export default function PageActifsPrimaires() {
             >
               Complément de description
             </DataListCell>
-            <DataListCell colName="niveauxdimpact">
+            <DataListCell
+              colName="niveauxdimpact"
+              alignItems="center"
+              colWidth="7.5rem"
+            >
               Niveaux d'impact
             </DataListCell>
           </DataListHeader>
@@ -103,7 +107,7 @@ export default function PageActifsPrimaires() {
                   {actif?.complementary_description || ''}
                 </Text>
               </DataListCell>
-              <DataListCell colName="niveauxdimpact">
+              <DataListCell colName="niveauxdimpact" alignItems="center">
                 <ImpactLevel level={actif.impact_level} />
               </DataListCell>
             </DataListRow>

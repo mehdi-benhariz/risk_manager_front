@@ -9,11 +9,10 @@ const actifsPrimairesFactoryKey = {
 
 type ActifsSupportType = {
   id: number;
-  code: string;
-  description: string;
-  complementary_description: string;
+  element: string;
+  name: string;
   actif_type: string;
-  impact_level: string;
+  isSelected: boolean;
 };
 
 export const useActifsSupportList = (
@@ -28,12 +27,11 @@ export const useActifsSupportList = (
     (): Promise<ActifsSupportType[]> =>
       Promise.resolve(
         Array.from({ length: 20 }, (_, i) => ({
+          element: faker.lorem.words(3),
           id: faker.number.int({ min: 1000, max: 9999 }),
-          code: faker.lorem.word().substring(0, 5),
-          description: faker.lorem.words(8),
-          complementary_description: faker.lorem.sentence(),
+          name: faker.lorem.word(),
           actif_type: faker.lorem.word(),
-          impact_level: faker.helpers.arrayElement(['D', 'I', 'C', 'E']),
+          isSelected: faker.datatype.boolean(),
         }))
       )
     //    Axios.get('/support_actif/'),

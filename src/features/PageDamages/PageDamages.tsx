@@ -5,6 +5,7 @@ import {
   Heading,
   LinkBox,
   Stack,
+  Switch,
   Text,
 } from '@chakra-ui/react';
 import { use } from 'chai';
@@ -66,8 +67,12 @@ export default function PageDamagest() {
             <DataListCell colName="type" isVisible={{ base: false, md: true }}>
               Type de dommage
             </DataListCell>
-            <DataListCell colName="comment">Commentaires </DataListCell>
-            <DataListCell colName="select">Sélection </DataListCell>
+            <DataListCell colName="comment" colWidth={2}>
+              Commentaires{' '}
+            </DataListCell>
+            <DataListCell colName="select" colWidth="10rem">
+              Sélection{' '}
+            </DataListCell>
           </DataListHeader>
 
           {damages.isLoading && <DataListLoadingState />}
@@ -100,7 +105,17 @@ export default function PageDamagest() {
                 {damage.consequence_type}
               </DataListCell>
               <DataListCell colName="comment">{damage.comment} </DataListCell>
-              <DataListCell colName="select">{damage.selection} </DataListCell>
+              <DataListCell colName="select" alignItems="center" gap="2">
+                {' '}
+                <Switch
+                  colorScheme="blue"
+                  defaultChecked={damage.selection}
+                  isDisabled
+                />
+                <Badge colorScheme={!!damage.selection ? 'blue' : 'gray'}>
+                  {damage.selection ? 'Sélectionné' : 'Non sélectionné'}
+                </Badge>{' '}
+              </DataListCell>
             </DataListRow>
           ))}
         </DataList>

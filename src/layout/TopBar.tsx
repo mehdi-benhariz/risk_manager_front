@@ -66,7 +66,7 @@ export const TopBar = () => {
             to="/"
             mx={{ base: 'auto', [theme.layout.breakpoints.desktop]: 0 }}
           >
-            <Logo mt="8" />
+            <Logo mt="4" h="4rem" />
           </Box>
           <Box me="auto" ms="4" display={{ base: 'none', md: 'flex' }} />
           {/* <MainMenu me="auto" ms="4" display={{ base: 'none', md: 'flex' }} /> */}
