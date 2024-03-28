@@ -5,7 +5,7 @@ import { FieldTextarea } from '@/components/FieldTextarea';
 
 export const CommentsStep = () => {
   return (
-    <FormizStep name="step 4" order={4}>
+    <FormizStep name="step 5" order={5}>
       <Stack>
         <Heading>4. Commentaire</Heading>
         <FieldTextarea
