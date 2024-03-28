@@ -69,13 +69,13 @@ export const TopBar = () => {
             <Logo mt="4" h="4rem" />
           </Box>
           <Box me="auto" ms="4" display={{ base: 'none', md: 'flex' }} />
-          {/* <MainMenu me="auto" ms="4" display={{ base: 'none', md: 'flex' }} /> */}
+          <MainMenu me="auto" ms="4" display={{ base: 'none', md: 'flex' }} />
           <AccountMenu />
         </Flex>
       </SlideFade>
       <Box h={theme.layout.topBar.height} />
-      <NavDrawer />
-      {/* {showDrawer && <NavDrawer />} */}
+      {<NavDrawer />}
+      {showDrawer && <NavDrawer />}
     </>
   );
 };

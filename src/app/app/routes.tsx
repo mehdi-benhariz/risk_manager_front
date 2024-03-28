@@ -147,7 +147,9 @@ export const routes = [
         children: [
           {
             path: '',
-            element: <PageDashboard />,
+            // redirect to actifsprimaires
+
+            element: <Navigate to="actifsprimaires" replace />,
           },
           {
             path: 'actifsprimaires',
