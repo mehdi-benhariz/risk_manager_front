@@ -37,7 +37,7 @@ export const ErrorPage = ({ errorCode }: { errorCode?: number }) => {
         align="center"
         spacing={4}
       >
-        <Link href="https://www.malekkhannoussi.tn/">{illustration}</Link>
+        {illustration}
         <Stack
           textAlign={{ base: 'center', md: 'left' }}
           alignItems={{ base: 'center', md: 'flex-start' }}
