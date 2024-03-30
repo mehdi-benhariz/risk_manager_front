@@ -80,12 +80,12 @@ const preview: Preview = {
       dark: {
         ...themes.dark,
         brandImage: logoReversed.src,
-        brandTitle: 'Start UI',
+        brandTitle: 'Risk management',
       },
       light: {
         ...themes.light,
         brandImage: logo.src,
-        brandTitle: 'Start UI',
+        brandTitle: 'Risk management',
       },
     },
     layout: 'fullscreen',

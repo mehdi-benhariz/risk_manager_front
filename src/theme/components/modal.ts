@@ -41,7 +41,7 @@ export const modalTheme = defineMultiStyleConfig({
       mx: 4,
       py: 0,
       _dark: {
-        bg: 'gray.800',
+        bg: 'gray.500',
       },
     },
     header: {

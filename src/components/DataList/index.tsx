@@ -159,7 +159,7 @@ export const DataListAccordionPanel = ({ ...rest }) => {
       px="4"
       py="3"
       bg="gray.50"
-      _dark={{ bg: 'gray.800' }}
+      _dark={{ bg: 'gray.500' }}
       {...rest}
     />
   );

@@ -62,7 +62,7 @@ const AppVersion = ({ ...rest }) => {
         _focusVisible={{ bg: 'gray.50' }}
         _dark={{
           color: 'gray.200',
-          _focusVisible: { bg: 'gray.800' },
+          _focusVisible: { bg: 'gray.500' },
           _hover: { bg: 'gray.600' },
         }}
         onClick={onCopy}
@@ -82,7 +82,7 @@ const AppVersion = ({ ...rest }) => {
           bg="gray.50"
           color={hasCopied ? 'success.500' : undefined}
           _dark={{
-            bg: 'gray.800',
+            bg: 'gray.500',
             color: hasCopied ? 'success.300' : undefined,
           }}
           transition="0.2s"
@@ -110,7 +110,7 @@ export const AccountMenu = ({ ...rest }) => {
   const navigate = useNavigate();
 
   return (
-    <Box color="gray.800" _dark={{ color: 'white' }}>
+    <Box color="gray.500" _dark={{ color: 'white' }}>
       <Menu placement="bottom-end" {...rest}>
         <MenuButton borderRadius="full" _focusVisible={{ shadow: 'outline' }}>
           <Avatar size="sm" icon={<></>} name={account.data?.login}>

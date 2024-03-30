@@ -23,7 +23,7 @@ export const Document = ({ children }: { children: ReactNode }) => {
       }
     >
       <head>
-        <title>Start UI</title>
+        <title>Risk Management</title>
         <meta
           name="viewport"
           content="width=device-width,initial-scale=1,viewport-fit=cover"
@@ -54,13 +54,13 @@ export const Document = ({ children }: { children: ReactNode }) => {
         <link
           rel="mask-icon"
           href="/safari-pinned-tab.svg"
-          color={theme.colors.gray?.['800']}
+          color={theme.colors.gray?.['500']}
         />
         <meta
           name="msapplication-TileColor"
-          content={theme.colors.gray?.['800']}
+          content={theme.colors.gray?.['500']}
         />
-        <meta name="theme-color" content={theme.colors.gray?.['800']} />
+        <meta name="theme-color" content={theme.colors.gray?.['500']} />
       </head>
       <body>
         {/* https://github.com/chakra-ui/chakra-ui/issues/7040 */}
