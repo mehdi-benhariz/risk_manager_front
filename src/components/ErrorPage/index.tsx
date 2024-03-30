@@ -49,7 +49,7 @@ export const ErrorPage = ({ errorCode }: { errorCode?: number }) => {
           <Text>{t(`components:errorPage.${errorType}.description`)}</Text>
           {!!errorCode && (
             <Text
-              color="gray.500"
+              color="gray.800"
               _dark={{ color: 'gray.400' }}
               fontSize="sm"
               mt={4}

@@ -174,7 +174,7 @@ export const NavGroup: FC<React.PropsWithChildren<FlexProps>> = ({
         px="3"
         pt="6"
         pb="2"
-        color="gray.500"
+        color="gray.800"
         _dark={{ color: 'gray.300' }}
         {...rest}
       >

@@ -57,12 +57,12 @@ const AppVersion = ({ ...rest }) => {
         fontSize="0.7rem"
         fontWeight="medium"
         outline="none"
-        color="gray.500"
+        color="gray.800"
         _hover={{ bg: 'gray.50' }}
         _focusVisible={{ bg: 'gray.50' }}
         _dark={{
           color: 'gray.200',
-          _focusVisible: { bg: 'gray.500' },
+          _focusVisible: { bg: 'gray.800' },
           _hover: { bg: 'gray.600' },
         }}
         onClick={onCopy}
@@ -82,7 +82,7 @@ const AppVersion = ({ ...rest }) => {
           bg="gray.50"
           color={hasCopied ? 'success.500' : undefined}
           _dark={{
-            bg: 'gray.500',
+            bg: 'gray.800',
             color: hasCopied ? 'success.300' : undefined,
           }}
           transition="0.2s"
@@ -110,7 +110,7 @@ export const AccountMenu = ({ ...rest }) => {
   const navigate = useNavigate();
 
   return (
-    <Box color="gray.500" _dark={{ color: 'white' }}>
+    <Box color="gray.800" _dark={{ color: 'white' }}>
       <Menu placement="bottom-end" {...rest}>
         <MenuButton borderRadius="full" _focusVisible={{ shadow: 'outline' }}>
           <Avatar size="sm" icon={<></>} name={account.data?.login}>
@@ -144,7 +144,7 @@ export const AccountMenu = ({ ...rest }) => {
           </MenuItem>
           <MenuDivider />
           <MenuItem
-            icon={<Icon icon={LuLogOut} fontSize="lg" color="gray.400" />}
+            icon={<Icon icon={LuLogOut} fontSize="lg" color="gray.800" />}
             onClick={() => navigate('/logout')}
           >
             {t('layout:accountMenu.logout')}

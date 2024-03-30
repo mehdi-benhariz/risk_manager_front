@@ -26,7 +26,7 @@ export const NavDrawer = ({ ...rest }) => {
     >
       <DrawerOverlay>
         <DrawerContent
-          bg="gray.400"
+          bg="gray.800"
           color="white"
           pt="safe-top"
           pb="safe-bottom"

@@ -159,7 +159,7 @@ export const DataListAccordionPanel = ({ ...rest }) => {
       px="4"
       py="3"
       bg="gray.50"
-      _dark={{ bg: 'gray.500' }}
+      _dark={{ bg: 'gray.800' }}
       {...rest}
     />
   );
@@ -223,7 +223,7 @@ export const DataListHeader: FC<
       <DataListRow
         fontSize="xs"
         fontWeight="bold"
-        color="gray.500"
+        color="gray.800"
         borderBottom="1px solid"
         borderBottomColor="gray.100"
         _hover={{}}

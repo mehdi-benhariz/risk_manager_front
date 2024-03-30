@@ -22,7 +22,7 @@ export const MultiStepsLayout: FC<
               Previous
             </Button>
           )}
-          <Box gridColumn="2" textAlign="center" fontSize="sm" color="gray.500">
+          <Box gridColumn="2" textAlign="center" fontSize="sm" color="gray.800">
             Step {(form.currentStep?.index ?? 0) + 1} / {form.steps?.length}
           </Box>
           <Button
