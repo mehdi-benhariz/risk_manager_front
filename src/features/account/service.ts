@@ -56,7 +56,7 @@ export const useCreateAccount = (
   > = {}
 ) => {
   return useMutation(async (payload) => {
-    await Axios.post('/register', {
+    await Axios.post('/auth/register', {
       ...payload,
       langKey: payload.langKey ?? DEFAULT_LANGUAGE_KEY,
     });

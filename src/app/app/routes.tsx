@@ -33,6 +33,13 @@ const PageApiDocumentation = dynamic(
   }
 );
 
+const PageRiskSheets = dynamic(
+  () => import('@/features/PageRiskSheets/PageRiskSheets'),
+  {
+    loading: () => <Loader />,
+  }
+);
+
 const PageUsers = dynamic(() => import('@/features/users/PageUsers'), {
   loading: () => <Loader />,
 });
@@ -150,6 +157,11 @@ export const routes = [
             // redirect to actifsprimaires
 
             element: <Navigate to="actifsprimaires" replace />,
+          },
+
+          {
+            path: 'riskSheets',
+            element: <PageRiskSheets />,
           },
           {
             path: 'actifsprimaires',
