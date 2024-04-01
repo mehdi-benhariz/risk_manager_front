@@ -48,7 +48,7 @@ export const LoginForm = ({
             name="username"
             label={t('auth:data.username.label')}
             required={t('auth:data.username.required')}
-            formatValue={(v) => v?.toLowerCase().trim()}
+            formatValue={(v) => `${v}`.toLowerCase().trim()}
           />
           <FieldInput
             name="password"

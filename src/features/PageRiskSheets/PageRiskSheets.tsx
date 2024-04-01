@@ -1,13 +1,4 @@
-import {
-  Badge,
-  Button,
-  Checkbox,
-  HStack,
-  Heading,
-  LinkBox,
-  Stack,
-  Text,
-} from '@chakra-ui/react';
+import { Button, Heading, LinkBox } from '@chakra-ui/react';
 
 import {
   DataList,
@@ -21,19 +12,6 @@ import {
 import { Page, PageContent } from '@/components/Page';
 
 import { useRiskSheetsList } from './RiskSheetsServices';
-
-const ImpactLevel = ({ level }: { level: string }) => {
-  return (
-    <HStack>
-      {['D', 'I', 'C', 'E'].map((l) => (
-        <Stack key={l}>
-          <Badge color={level === l ? 'blue' : 'gray'}>{l}</Badge>
-          <Checkbox defaultChecked={level === l} isDisabled></Checkbox>
-        </Stack>
-      ))}
-    </HStack>
-  );
-};
 
 export default function PageRiskSheets() {
   const riskSheets = useRiskSheetsList();
@@ -78,7 +56,7 @@ export default function PageRiskSheets() {
           {riskSheets?.data?.map((riskSheet) => (
             <DataListRow as={LinkBox} key={riskSheet.id}>
               <DataListCell colName="delete">
-                <Button onClick={() => {}}>🗑</Button>
+                <Button>🗑</Button>
               </DataListCell>
               <DataListCell colName="number">{riskSheet.id}</DataListCell>
               <DataListCell colName="dic">DIC</DataListCell>

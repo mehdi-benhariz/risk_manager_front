@@ -4,8 +4,6 @@ import { Formiz, useForm } from '@formiz/core';
 import { MultiStepsLayout } from '@/components/MultiStepsLayout';
 
 import { useActifsPrimairesList } from '../PageActifsPrimaires/AcrifsPromairesServices';
-import { useActifsSupportList } from '../PageActifsSupport/ActifsSupportServices';
-import { CommentsStep } from './CommentsStep';
 import { DesisionStep } from './DesisionStep';
 import { MesserRiskLevelStep } from './MesserRiskLevelStep';
 import { MinimiseRiskLevelStep } from './MinimiseRiskLevelStep';
@@ -38,7 +36,7 @@ export default function PageRiskAnalysis() {
           <Formiz connect={form} autoForm="step">
             <MultiStepsLayout submitLabel="✔️">
               <RiskDescriptionStep
-                optionActifsPrimaires={optionActifsPrimaires}
+                optionActifsPrimaires={optionActifsPrimaires || []}
               />
               <MinimiseRiskLevelStep />
               <MesserRiskLevelStep />

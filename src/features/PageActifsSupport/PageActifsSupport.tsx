@@ -1,15 +1,4 @@
-import {
-  Badge,
-  Checkbox,
-  HStack,
-  Heading,
-  LinkBox,
-  Stack,
-  Switch,
-  Text,
-} from '@chakra-ui/react';
-import { use } from 'chai';
-import { useTranslation } from 'react-i18next';
+import { Badge, Heading, LinkBox, Switch, Text } from '@chakra-ui/react';
 
 import {
   DataList,
@@ -39,9 +28,7 @@ export default function PageActifsSupport() {
             <DataListCell colName="name" colWidth="4rem">
               Nom
             </DataListCell>
-            <DataListCell colName="actType">
-              Types d'actifs support
-            </DataListCell>
+            <DataListCell colName="actType">Types dactifs support</DataListCell>
             <DataListCell colName="selection" colWidth="10rem">
               Sélection{' '}
             </DataListCell>

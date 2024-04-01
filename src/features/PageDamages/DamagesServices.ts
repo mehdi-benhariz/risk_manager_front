@@ -1,6 +1,5 @@
-import { faker } from '@faker-js/faker';
-import { UseQueryOptions, useQuery } from '@tanstack/react-query';
-import Axios, { AxiosError } from 'axios';
+import { useQuery } from '@tanstack/react-query';
+import Axios from 'axios';
 
 const actifsPrimairesFactoryKey = {
   all: () => ['actifsPrimaires'],
@@ -14,12 +13,10 @@ type DamagestType = {
   name: string;
   damage_type: string;
   comment: string;
-  isSelected: boolean;
+  selection: boolean;
 };
 
-export const useDamagestList = (
-  config: UseQueryOptions<DamagestType[], AxiosError, DamagestType[]> = {}
-) =>
+export const useDamagestList = () =>
   useQuery(
     actifsPrimairesFactoryKey.list(),
     async (): Promise<DamagestType[]> => {

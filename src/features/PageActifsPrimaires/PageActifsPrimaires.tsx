@@ -55,7 +55,7 @@ export default function PageActifsPrimaires() {
         </Text>
         <DataList>
           <DataListHeader isVisible={{ base: false, md: true }}>
-            <DataListCell colName="type">Type d'actifs</DataListCell>
+            <DataListCell colName="type">Type d&apos;actifs</DataListCell>
             <DataListCell colName="code" colWidth="4rem">
               Code
             </DataListCell>
@@ -77,7 +77,7 @@ export default function PageActifsPrimaires() {
               alignItems="center"
               colWidth="7.5rem"
             >
-              Niveaux d'impact
+              Niveaux d&apos;impact
             </DataListCell>
           </DataListHeader>
 

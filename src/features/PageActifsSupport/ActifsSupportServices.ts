@@ -1,6 +1,5 @@
-import { faker } from '@faker-js/faker';
-import { UseQueryOptions, useQuery } from '@tanstack/react-query';
-import Axios, { AxiosError } from 'axios';
+import { useQuery } from '@tanstack/react-query';
+import Axios from 'axios';
 
 const actifsPrimairesFactoryKey = {
   all: () => ['actifsPrimaires'],
@@ -15,13 +14,7 @@ type ActifsSupportType = {
   selection: boolean;
 };
 
-export const useActifsSupportList = (
-  config: UseQueryOptions<
-    ActifsSupportType[],
-    AxiosError,
-    ActifsSupportType[]
-  > = {}
-) =>
+export const useActifsSupportList = () =>
   useQuery(
     actifsPrimairesFactoryKey.list(),
     async (): Promise<ActifsSupportType[]> => {

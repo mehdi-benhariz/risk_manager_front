@@ -13,7 +13,7 @@ const StackParam = {
 } as StackProps;
 
 type RiskDescriptionStepProps = {
-  optionActifsPrimaires?: { value: string; label: string }[];
+  optionActifsPrimaires?: { value: number; label: string }[];
 };
 export const RiskDescriptionStep: FC<RiskDescriptionStepProps> = ({
   optionActifsPrimaires,

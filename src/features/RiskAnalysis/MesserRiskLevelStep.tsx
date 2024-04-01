@@ -1,4 +1,4 @@
-import { Heading, Stack, StackProps, Text } from '@chakra-ui/react';
+import { Heading, Stack, StackProps } from '@chakra-ui/react';
 import { FormizStep } from '@formiz/core';
 
 import { FieldInput } from '@/components/FieldInput';
@@ -13,7 +13,7 @@ export const MesserRiskLevelStep = () => {
   return (
     <FormizStep name="step 3" order={3}>
       <Stack>
-        <Heading>Mesures de réduction de l'Impact</Heading>
+        <Heading>Mesures de réduction de l&apos;Impact</Heading>
         <Stack {...StackParam}>
           <FieldInput
             name="c1"

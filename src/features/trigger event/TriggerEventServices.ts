@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
-import Axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 
 const triggerEventsFactoryKey = {
   all: () => ['triggerEvents'],
@@ -19,18 +19,12 @@ type TriggerEventsType = {
   isSelected?: boolean;
 };
 
-export const useTriggerEventsList = (
-  config: UseQueryOptions<
-    TriggerEventsType[],
-    AxiosError,
-    TriggerEventsType[]
-  > = {}
-) =>
+export const useTriggerEventsList = () =>
   useQuery(
     triggerEventsFactoryKey.list(),
     (): Promise<TriggerEventsType[]> =>
       Promise.resolve(
-        Array.from({ length: 20 }, (_, i) => ({
+        Array.from({ length: 20 }, () => ({
           code_type: faker.lorem.word(4),
           type: faker.lorem.words(5),
           code: faker.lorem.word(4),

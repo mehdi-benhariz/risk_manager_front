@@ -1,6 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { UseQueryOptions, useQuery } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
+import { useQuery } from '@tanstack/react-query';
 
 const ruskSheetsFactoryKey = {
   all: () => ['ruskSheets'],
@@ -27,14 +26,12 @@ type RiskSheetsType = {
   decision_id: number;
 };
 
-export const useRiskSheetsList = (
-  config: UseQueryOptions<RiskSheetsType[], AxiosError, RiskSheetsType[]> = {}
-) =>
+export const useRiskSheetsList = () =>
   useQuery(
     ruskSheetsFactoryKey.list(),
     (): Promise<RiskSheetsType[]> =>
       Promise.resolve(
-        Array.from({ length: 20 }, (_, i) => ({
+        Array.from({ length: 20 }, () => ({
           id: faker.number.int({ min: 1000, max: 9999 }),
           consequence_type: faker.lorem.words(8),
           intrinsic_impact: faker.number.int({ min: 1000, max: 9999 }),

@@ -1,15 +1,4 @@
-import {
-  Badge,
-  Checkbox,
-  HStack,
-  Heading,
-  LinkBox,
-  Stack,
-  Switch,
-  Text,
-} from '@chakra-ui/react';
-import { use } from 'chai';
-import { useTranslation } from 'react-i18next';
+import { Badge, Heading, LinkBox, Switch, Text } from '@chakra-ui/react';
 
 import {
   DataList,
@@ -24,19 +13,6 @@ import { Page, PageContent } from '@/components/Page';
 
 import { useDamagestList } from './DamagesServices';
 
-const ImpactLevel = ({ level }: { level: string }) => {
-  return (
-    <HStack>
-      {['D', 'I', 'C', 'E'].map((l) => (
-        <Stack key={l}>
-          <Badge color={level === l ? 'blue' : 'gray'}>{l}</Badge>
-          <Checkbox defaultChecked={level === l} isDisabled></Checkbox>
-        </Stack>
-      ))}
-    </HStack>
-  );
-};
-
 export default function PageDamagest() {
   const damages = useDamagestList();
   console.log(damages);
@@ -50,9 +26,9 @@ export default function PageDamagest() {
           Rappel Ces dommages sont subis par des actifs secondaires (ou
           supports) qui peuvent être : Des éléments matériels : équipement
           fonctionnel, câblage, dispositifs de sécurité, etc. des médias support
-          de logiciel, d'automatisme, de paramètres de processus ou de données.
-          Des éléments immatériels : logiciel, automatisme, paramétrage de
-          processus, etc. ou des données (fichiers constitués, données
+          de logiciel, d&apos;automatisme, de paramètres de processus ou de
+          données. Des éléments immatériels : logiciel, automatisme, paramétrage
+          de processus, etc. ou des données (fichiers constitués, données
           fugitives, messages, échanges audiovisuels, etc.) Des procédures de
           management
         </Text>

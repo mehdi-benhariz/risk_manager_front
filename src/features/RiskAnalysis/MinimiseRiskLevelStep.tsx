@@ -1,4 +1,4 @@
-import { Heading, Stack, StackProps, Text } from '@chakra-ui/react';
+import { Heading, Stack, StackProps } from '@chakra-ui/react';
 import { FormizStep } from '@formiz/core';
 
 import { FieldInput } from '@/components/FieldInput';

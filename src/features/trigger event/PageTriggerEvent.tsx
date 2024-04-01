@@ -22,19 +22,6 @@ import { Page, PageContent } from '@/components/Page';
 
 import { useTriggerEventsList } from './TriggerEventServices';
 
-const ImpactLevel = ({ level }: { level: string }) => {
-  return (
-    <HStack>
-      {['D', 'I', 'C', 'E'].map((l) => (
-        <Stack key={l}>
-          <Badge color={level === l ? 'blue' : 'gray'}>{l}</Badge>
-          <Checkbox defaultChecked={level === l} isDisabled></Checkbox>
-        </Stack>
-      ))}
-    </HStack>
-  );
-};
-
 export default function PageTriggerEvents() {
   const TriggerEvents = useTriggerEventsList();
   return (
