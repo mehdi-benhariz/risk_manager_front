@@ -25,16 +25,8 @@ export const useActifsPrimairesList = (
 ) =>
   useQuery(
     actifsPrimairesFactoryKey.list(),
-    (): Promise<ActifsPrimairesType[]> =>
-      Promise.resolve(
-        Array.from({ length: 20 }, (_, i) => ({
-          id: faker.number.int({ min: 1000, max: 9999 }),
-          code: faker.lorem.word().substring(0, 5),
-          description: faker.lorem.words(8),
-          complementary_description: faker.lorem.sentence(),
-          actif_type: faker.lorem.word(),
-          impact_level: faker.helpers.arrayElement(['D', 'I', 'C', 'E']),
-        }))
-      )
-    //    Axios.get('/primary_actif/'),
+    async (): Promise<ActifsPrimairesType[]> => {
+      const response = await Axios.get('/primary_actif/');
+      return response?.data;
+    }
   );

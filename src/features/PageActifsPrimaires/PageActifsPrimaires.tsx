@@ -21,13 +21,19 @@ import { Page, PageContent } from '@/components/Page';
 
 import { useActifsPrimairesList } from './AcrifsPromairesServices';
 
-const ImpactLevel = ({ level }: { level: string }) => {
+const ImpactLevel = ({ level }: { level: number }) => {
+  const levels = ['D', 'I', 'C', 'E'];
   return (
     <HStack>
-      {['D', 'I', 'C', 'E'].map((l) => (
+      {levels.map((l) => (
         <Stack key={l}>
-          <Badge color={level === l ? 'blue' : 'gray'}>{l}</Badge>
-          <Checkbox defaultChecked={level === l} isDisabled></Checkbox>
+          <Badge color={(levels[level - 1] ?? '') === l ? 'blue' : 'gray'}>
+            {l}
+          </Badge>
+          <Checkbox
+            defaultChecked={(levels[level - 1] ?? '') === l}
+            isDisabled
+          ></Checkbox>
         </Stack>
       ))}
     </HStack>
@@ -36,6 +42,8 @@ const ImpactLevel = ({ level }: { level: string }) => {
 
 export default function PageActifsPrimaires() {
   const actifsPrimaires = useActifsPrimairesList();
+  const { data } = actifsPrimaires;
+  console.log({ data });
   return (
     <Page containerSize="xl">
       <PageContent>
@@ -60,6 +68,7 @@ export default function PageActifsPrimaires() {
             <DataListCell
               colName="complementary_description"
               isVisible={{ base: false, md: true }}
+              colWidth={2}
             >
               Complément de description
             </DataListCell>
@@ -83,35 +92,36 @@ export default function PageActifsPrimaires() {
             <DataListEmptyState />
           )}
 
-          {actifsPrimaires?.data?.map((actif) => (
-            <DataListRow as={LinkBox} key={actif.id}>
-              <DataListCell colName="type" colWidth="auto">
-                {actif?.actif_type || ''}
-              </DataListCell>
-              <DataListCell colName="code">
-                <Badge>{actif?.code || ''}</Badge>
-              </DataListCell>
-              <DataListCell
-                colName="description"
-                isVisible={{ base: false, md: true }}
-              >
-                <Text color="gray.600" fontSize="md">
-                  {actif?.description || ''}
-                </Text>
-              </DataListCell>
-              <DataListCell
-                colName="complementary_description"
-                isVisible={{ base: false, md: true }}
-              >
-                <Text color="gray.600" fontSize="md">
-                  {actif?.complementary_description || ''}
-                </Text>
-              </DataListCell>
-              <DataListCell colName="niveauxdimpact" alignItems="center">
-                <ImpactLevel level={actif.impact_level} />
-              </DataListCell>
-            </DataListRow>
-          ))}
+          {actifsPrimaires?.data?.map &&
+            actifsPrimaires?.data?.map((actif) => (
+              <DataListRow as={LinkBox} key={actif.id}>
+                <DataListCell colName="type" colWidth="auto">
+                  {actif?.actif_type || ''}
+                </DataListCell>
+                <DataListCell colName="code">
+                  <Badge>{actif?.code || ''}</Badge>
+                </DataListCell>
+                <DataListCell
+                  colName="description"
+                  isVisible={{ base: false, md: true }}
+                >
+                  <Text color="gray.600" fontSize="md">
+                    {actif?.description || ''}
+                  </Text>
+                </DataListCell>
+                <DataListCell
+                  colName="complementary_description"
+                  isVisible={{ base: false, md: true }}
+                >
+                  <Text color="gray.600" fontSize="md">
+                    {actif?.complementary_description || ''}
+                  </Text>
+                </DataListCell>
+                <DataListCell colName="niveauxdimpact" alignItems="center">
+                  <ImpactLevel level={+actif.impact_level} />
+                </DataListCell>
+              </DataListRow>
+            ))}
         </DataList>
       </PageContent>
     </Page>

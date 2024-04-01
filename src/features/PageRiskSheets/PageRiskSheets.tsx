@@ -43,9 +43,6 @@ export default function PageRiskSheets() {
         <Heading size="md" mb="4">
           Actifs Primaires
         </Heading>
-        <Text color="gray.600">
-          concernés par le dysfonctionnement décrit ci-dessous
-        </Text>
         <DataList>
           <DataListHeader isVisible={{ base: false, md: true }}>
             <DataListCell colName="delete" colWidth="4rem"></DataListCell>
@@ -62,7 +59,9 @@ export default function PageRiskSheets() {
             <DataListCell colName="gi">GI</DataListCell>
             <DataListCell colName="gr">GR</DataListCell>
             <DataListCell colName="decision">Décision prise</DataListCell>
-            <DataListCell colName="comment">Commentaire</DataListCell>
+            <DataListCell colName="comment" colWidth={3}>
+              Commentaire
+            </DataListCell>
           </DataListHeader>
 
           {riskSheets.isLoading && <DataListLoadingState />}

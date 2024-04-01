@@ -39,6 +39,7 @@ const ImpactLevel = ({ level }: { level: string }) => {
 
 export default function PageDamagest() {
   const damages = useDamagestList();
+  console.log(damages);
   return (
     <Page containerSize="xl">
       <PageContent>
@@ -67,7 +68,7 @@ export default function PageDamagest() {
             <DataListCell colName="type" isVisible={{ base: false, md: true }}>
               Type de dommage
             </DataListCell>
-            <DataListCell colName="comment" colWidth={2}>
+            <DataListCell colName="comment" colWidth={3}>
               Commentaires{' '}
             </DataListCell>
             <DataListCell colName="select" colWidth="10rem">

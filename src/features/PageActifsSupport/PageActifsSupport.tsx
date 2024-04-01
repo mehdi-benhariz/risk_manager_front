@@ -24,19 +24,6 @@ import { Page, PageContent } from '@/components/Page';
 
 import { useActifsSupportList } from './ActifsSupportServices';
 
-const ImpactLevel = ({ level }: { level: string }) => {
-  return (
-    <HStack>
-      {['D', 'I', 'C', 'E'].map((l) => (
-        <Stack key={l}>
-          <Badge color={level === l ? 'blue' : 'gray'}>{l}</Badge>
-          <Checkbox defaultChecked={level === l} isDisabled></Checkbox>
-        </Stack>
-      ))}
-    </HStack>
-  );
-};
-
 export default function PageActifsSupport() {
   const actifsSupport = useActifsSupportList();
   return (
@@ -49,11 +36,13 @@ export default function PageActifsSupport() {
         <DataList>
           <DataListHeader isVisible={{ base: false, md: true }}>
             <DataListCell colName="element">Element</DataListCell>
-            <DataListCell colName="name">Nom</DataListCell>
+            <DataListCell colName="name" colWidth="4rem">
+              Nom
+            </DataListCell>
             <DataListCell colName="actType">
               Types d'actifs support
             </DataListCell>
-            <DataListCell colName="isSelected" colWidth="10rem">
+            <DataListCell colName="selection" colWidth="10rem">
               Sélection{' '}
             </DataListCell>
           </DataListHeader>
@@ -73,20 +62,18 @@ export default function PageActifsSupport() {
             <DataListRow as={LinkBox} key={actif.id}>
               <DataListCell colName="element">{actif.element}</DataListCell>
 
-              <DataListCell colName="name" colWidth="auto">
-                {actif?.name}
-              </DataListCell>
+              <DataListCell colName="name">{actif?.name}</DataListCell>
               <DataListCell colName="actType">
-                <Text>{actif?.actif_type}</Text>
+                <Text>{actif?.type}</Text>
               </DataListCell>
-              <DataListCell colName="isSelected" alignItems="center" gap="2">
+              <DataListCell colName="selection" alignItems="center" gap="2">
                 <Switch
                   colorScheme="blue"
-                  defaultChecked={actif.isSelected}
+                  defaultChecked={actif.selection}
                   isDisabled
                 />
-                <Badge colorScheme={!!actif.isSelected ? 'blue' : 'gray'}>
-                  {actif.isSelected ? 'Sélectionné' : 'Non sélectionné'}
+                <Badge colorScheme={!!actif.selection ? 'blue' : 'gray'}>
+                  {actif.selection ? 'Sélectionné' : 'Non sélectionné'}
                 </Badge>
               </DataListCell>
             </DataListRow>

@@ -11,8 +11,8 @@ type ActifsSupportType = {
   id: number;
   element: string;
   name: string;
-  actif_type: string;
-  isSelected: boolean;
+  type: string;
+  selection: boolean;
 };
 
 export const useActifsSupportList = (
@@ -24,15 +24,9 @@ export const useActifsSupportList = (
 ) =>
   useQuery(
     actifsPrimairesFactoryKey.list(),
-    (): Promise<ActifsSupportType[]> =>
-      Promise.resolve(
-        Array.from({ length: 20 }, (_, i) => ({
-          element: faker.lorem.words(3),
-          id: faker.number.int({ min: 1000, max: 9999 }),
-          name: faker.lorem.word(),
-          actif_type: faker.lorem.word(),
-          isSelected: faker.datatype.boolean(),
-        }))
-      )
+    async (): Promise<ActifsSupportType[]> => {
+      const response = await Axios.get('/support_actif/');
+      return response?.data;
+    }
     //    Axios.get('/support_actif/'),
   );

@@ -24,7 +24,7 @@ export const useLogin = (
     {
       ...config,
       onSuccess: (data, ...args) => {
-        updateToken(data.id_token);
+        updateToken(data.access_token);
         config?.onSuccess?.(data, ...args);
       },
     }

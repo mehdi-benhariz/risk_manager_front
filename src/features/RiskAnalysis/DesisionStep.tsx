@@ -9,6 +9,11 @@ export const DesisionStep = () => {
       <Stack>
         <Heading>3. Décision</Heading>
         <FieldTextarea name="d1" label="Décision prise" />
+        <Heading>4. Commentaire</Heading>
+        <FieldTextarea
+          name="d1"
+          label="Mettez dans la case ci-contre tout commentaire éventuel que vous souhaiteriez conserver"
+        />
       </Stack>
     </FormizStep>
   );

@@ -22,17 +22,10 @@ export const useDamagestList = (
 ) =>
   useQuery(
     actifsPrimairesFactoryKey.list(),
-    (): Promise<DamagestType[]> =>
-      Promise.resolve(
-        Array.from({ length: 20 }, (_, i) => ({
-          id: faker.number.int({ min: 1000, max: 9999 }),
-          security_impact: faker.lorem.words(3),
-          consequence_type: faker.lorem.words(8),
-          name: faker.lorem.words(8),
-          damage_type: faker.lorem.words(3),
-          comment: faker.lorem.words(7),
-          isSelected: faker.datatype.boolean(),
-        }))
-      )
+    async (): Promise<DamagestType[]> => {
+      const response = await Axios.get('/damage/');
+      return response?.data;
+    }
+
     //    Axios.get('/damage/'),
   );
