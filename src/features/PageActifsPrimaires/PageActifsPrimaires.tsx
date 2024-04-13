@@ -21,7 +21,7 @@ import { Page, PageContent } from '@/components/Page';
 
 import { useActifsPrimairesList } from './AcrifsPromairesServices';
 
-const ImpactLevel = ({ level }: { level: number }) => {
+export const ImpactLevel = ({ level }: { level: number }) => {
   const levels = ['D', 'I', 'C', 'E'];
   return (
     <HStack>

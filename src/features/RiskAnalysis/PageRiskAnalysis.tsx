@@ -4,18 +4,47 @@ import { Formiz, useForm } from '@formiz/core';
 import { MultiStepsLayout } from '@/components/MultiStepsLayout';
 
 import { useActifsPrimairesList } from '../PageActifsPrimaires/AcrifsPromairesServices';
-import { DesisionStep } from './DesisionStep';
+import { useActifsSupportList } from '../PageActifsSupport/ActifsSupportServices';
+import { useDamagestList } from '../PageDamages/DamagesServices';
+import { useTriggerEventsList } from '../trigger event/TriggerEventServices';
+import { DecisionStep } from './DecisionStep';
 import { MesserRiskLevelStep } from './MesserRiskLevelStep';
 import { MinimiseRiskLevelStep } from './MinimiseRiskLevelStep';
 import { RiskDescriptionStep } from './RiskDescriptionStep';
+import { useDecision } from './decision.service';
 
 export default function PageRiskAnalysis() {
   const toastValues = useToast();
-  const { data, isLoading } = useActifsPrimairesList();
+  const { data, isLoading: isActifsPremairesLoading } =
+    useActifsPrimairesList();
+  const { data: decision, isLoading: isDecisionLoading } = useDecision();
+
+  const { data: ActifsSupport, isLoading: isActifsSupportLoading } =
+    useActifsSupportList();
+
+  const { data: damages, isLoading: isDamagesLoading } = useDamagestList();
+  const { data: triggerEvents, isLoading: isTriggerEventsLoading } =
+    useTriggerEventsList();
+
   const optionActifsPrimaires = data?.map((actif) => ({
     value: actif.id,
     label: actif.description,
   }));
+  const actifsSupportOptions = ActifsSupport?.map((actif) => ({
+    value: actif.id,
+    label: actif.name,
+  }));
+
+  const damagesOptions = damages?.map((damage) => ({
+    value: damage.id,
+    label: damage.name,
+  }));
+
+  const triggerEventsOptions = triggerEvents?.map((event) => ({
+    value: event.id,
+    label: event.event,
+  }));
+
   const form = useForm({
     onValidSubmit: (values) => {
       toastValues({
@@ -23,6 +52,12 @@ export default function PageRiskAnalysis() {
       });
     },
   });
+  const isLoading =
+    isDecisionLoading ||
+    isActifsPremairesLoading ||
+    isTriggerEventsLoading ||
+    isActifsSupportLoading ||
+    isDamagesLoading;
 
   return (
     <Center minH="calc( 100vh - 4rem)">
@@ -36,11 +71,14 @@ export default function PageRiskAnalysis() {
           <Formiz connect={form} autoForm="step">
             <MultiStepsLayout submitLabel="✔️">
               <RiskDescriptionStep
+                actifsSupportOptions={actifsSupportOptions || []}
                 optionActifsPrimaires={optionActifsPrimaires || []}
+                damagesOptions={damagesOptions || []}
+                triggerEventsOptions={triggerEventsOptions || []}
               />
               <MinimiseRiskLevelStep />
               <MesserRiskLevelStep />
-              <DesisionStep />
+              <DecisionStep decision={decision} />
             </MultiStepsLayout>
           </Formiz>
         )}

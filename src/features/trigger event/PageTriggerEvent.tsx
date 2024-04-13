@@ -1,13 +1,4 @@
-import {
-  Badge,
-  Checkbox,
-  HStack,
-  Heading,
-  LinkBox,
-  Stack,
-  Switch,
-  Text,
-} from '@chakra-ui/react';
+import { Badge, Heading, LinkBox, Switch, Text } from '@chakra-ui/react';
 
 import {
   DataList,
@@ -24,8 +15,9 @@ import { useTriggerEventsList } from './TriggerEventServices';
 
 export default function PageTriggerEvents() {
   const TriggerEvents = useTriggerEventsList();
+  const { data } = TriggerEvents;
   return (
-    <Page containerSize="xl">
+    <Page containerSize="full">
       <PageContent>
         <Heading size="md" mb="4">
           Événements déclencheurs
@@ -37,7 +29,12 @@ export default function PageTriggerEvents() {
             <DataListCell colName="codeType" colWidth="4rem">
               Code type
             </DataListCell>
-            <DataListCell colName="code">Code</DataListCell>
+            <DataListCell colName="code" colWidth="4rem">
+              Code
+            </DataListCell>
+            <DataListCell colName="eventName" colWidth={2}>
+              Eventment
+            </DataListCell>
             <DataListCell colName="event">
               Exposition naturelle standard CLUSIF
             </DataListCell>
@@ -63,11 +60,11 @@ export default function PageTriggerEvents() {
               retry={() => TriggerEvents.refetch()}
             />
           )}
-          {TriggerEvents.isSuccess && !TriggerEvents.data.length && (
+          {TriggerEvents.isSuccess && !TriggerEvents.data?.data?.length && (
             <DataListEmptyState />
           )}
 
-          {TriggerEvents?.data?.map((TriggerEvent) => (
+          {data?.data?.map((TriggerEvent) => (
             <DataListRow as={LinkBox} key={TriggerEvent.code}>
               <DataListCell colName="type">
                 {TriggerEvent?.type || ''}
@@ -80,6 +77,12 @@ export default function PageTriggerEvents() {
                   {TriggerEvent?.code || ''}
                 </Text>
               </DataListCell>
+              <DataListCell colName="code">
+                <Text color="gray.600" fontSize="md">
+                  {TriggerEvent?.event || ''}
+                </Text>
+              </DataListCell>
+
               <DataListCell colName="event">
                 <Text color="gray.600" fontSize="md">
                   {TriggerEvent?.standard_natural_exposure || ''}

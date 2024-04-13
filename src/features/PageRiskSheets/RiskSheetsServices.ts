@@ -1,12 +1,13 @@
 import { faker } from '@faker-js/faker';
 import { useQuery } from '@tanstack/react-query';
+import Axios from 'axios';
 
 const ruskSheetsFactoryKey = {
   all: () => ['ruskSheets'],
   list: () => [...ruskSheetsFactoryKey.all(), 'list'],
 };
 
-type RiskSheetsType = {
+export type RiskSheetsType = {
   id: number;
   consequence_type: string;
   intrinsic_impact: number;
@@ -18,44 +19,50 @@ type RiskSheetsType = {
   residual_impact: number;
   comment: string;
   residual_gravity: number;
-  mesure_id: number;
-  support_actif_id: number;
-  damage_id: number;
-  primary_actif_id: number;
-  trigger_event_id: number;
-  decision_id: number;
+  decision: {
+    id: number;
+    decision_result: string;
+  };
+  trigger_event: {
+    id: number;
+    code_type: string;
+    type: string;
+    code: string;
+    event: string;
+    standard_natural_exposure: number;
+    decision_natural_exposure: number;
+    result_natural_exposure: number;
+    comment: string;
+  };
+  support_actif: {
+    id: number;
+    name: string;
+    type: string;
+    element: string;
+    selection: boolean;
+  };
+  damage: {
+    id: number;
+    security_impact: string;
+    consequence_type: string;
+    name: string;
+    damage_type: string;
+    comment: string;
+    selection: boolean;
+  };
+  primary_actif: {
+    id: number;
+    code: string;
+    description: string;
+    complementary_description: string;
+    actif_type: string;
+    impact_level: string;
+  };
 };
 
-export const useRiskSheetsList = () =>
+export const useRiskSheetsList = ({ xField = '' }: { xField?: string }) =>
   useQuery(
     ruskSheetsFactoryKey.list(),
-    (): Promise<RiskSheetsType[]> =>
-      Promise.resolve(
-        Array.from({ length: 20 }, () => ({
-          id: faker.number.int({ min: 1000, max: 9999 }),
-          consequence_type: faker.lorem.words(8),
-          intrinsic_impact: faker.number.int({ min: 1000, max: 9999 }),
-          personalized_intrinsic_impact: faker.number.int({
-            min: 1000,
-            max: 9999,
-          }),
-          intrinsic_gravity: faker.number.int({ min: 1000, max: 9999 }),
-          intrinsic_potential: faker.number.int({ min: 1000, max: 9999 }),
-          residual_potential: faker.number.int({ min: 1000, max: 9999 }),
-          personalized_residual_potential: faker.number.int({
-            min: 1000,
-            max: 9999,
-          }),
-          residual_impact: faker.number.int({ min: 1000, max: 9999 }),
-          comment: faker.lorem.sentence(),
-          residual_gravity: faker.number.int({ min: 1000, max: 9999 }),
-          mesure_id: faker.number.int({ min: 1000, max: 9999 }),
-          support_actif_id: faker.number.int({ min: 1000, max: 9999 }),
-          damage_id: faker.number.int({ min: 1000, max: 9999 }),
-          primary_actif_id: faker.number.int({ min: 1000, max: 9999 }),
-          trigger_event_id: faker.number.int({ min: 1000, max: 9999 }),
-          decision_id: faker.number.int({ min: 1000, max: 9999 }),
-        }))
-      )
-    //    Axios.get('/primary_actif/'),
+    (): Promise<{ data: RiskSheetsType[] }> =>
+      Axios.get('/risk/', { headers: { 'X-Fields': xField } })
   );
