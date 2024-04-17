@@ -22,5 +22,5 @@ type TriggerEventsType = {
 export const useTriggerEventsList = () =>
   useQuery(
     triggerEventsFactoryKey.list(),
-    (): Promise<{ data: TriggerEventsType[] }> => Axios.get('/trigger_event')
+    (): Promise<{ data: TriggerEventsType[] }> => Axios.get('/trigger_event/')
   );

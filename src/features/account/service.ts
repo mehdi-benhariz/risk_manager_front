@@ -3,13 +3,12 @@ import {
   UseMutationOptions,
   UseQueryOptions,
   useMutation,
-  useQuery,
   useQueryClient,
 } from '@tanstack/react-query';
 import Axios, { AxiosError } from 'axios';
 import { useTranslation } from 'react-i18next';
 
-import { User, zUser } from '@/features/users/schema';
+import { User } from '@/features/users/schema';
 import { DEFAULT_LANGUAGE_KEY } from '@/lib/i18n/constants';
 
 export const accountKeys = createQueryKeys('accountService', {
@@ -20,18 +19,19 @@ export const accountKeys = createQueryKeys('accountService', {
 type UseAccountQueryOptions = UseQueryOptions<User>;
 export const useAccount = (queryOptions: UseAccountQueryOptions = {}) => {
   const { i18n } = useTranslation();
-  const query = useQuery({
-    queryKey: accountKeys.account.queryKey,
-    queryFn: async () => {
-      const response = await Axios.get('/account');
-      const data = zUser().parse(response.data);
-      await i18n.changeLanguage(data?.langKey);
-      return data;
-    },
-    ...queryOptions,
-  });
-  const isAdmin = !!query.data?.authorities?.includes('ROLE_ADMIN');
-  return { isAdmin, ...query };
+  return { nope: true, isLoading: false, isAdmin: false, data: {} };
+  // const query = useQuery({
+  //   queryKey: accountKeys.account.queryKey,
+  //   queryFn: async () => {
+  //     const response = await Axios.get('/account');
+  //     const data = zUser().parse(response.data);
+  //     await i18n.changeLanguage(data?.langKey);
+  //     return data;
+  //   },
+  //   ...queryOptions,
+  // });
+  // const isAdmin = !!query.data?.authorities?.includes('ROLE_ADMIN');
+  // return { isAdmin, ...query };
 };
 
 export const useAccountFormQuery = (

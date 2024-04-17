@@ -60,7 +60,7 @@ export const TopBar = () => {
           bg="gray.800"
           _dark={{ bg: 'gray.900' }}
         >
-          <MenuButton ms="-0.5rem" />
+          {!!showDrawer && <MenuButton ms="-0.5rem" />}
           <Box
             as={Link}
             to="/"

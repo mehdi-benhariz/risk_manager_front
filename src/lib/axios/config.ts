@@ -6,7 +6,7 @@ import { isBrowser } from '@/lib/ssr';
 Axios.interceptors.request.use(
   (config) => {
     const isExternal = !!config?.url?.startsWith('http');
-    const token = isBrowser ? localStorage.getItem(AUTH_TOKEN_KEY) : null;
+    const token = isBrowser ? sessionStorage.getItem(AUTH_TOKEN_KEY) : null;
     if (token && !isExternal) {
       config.headers['Authorization'] = `Bearer ${token}`;
     }

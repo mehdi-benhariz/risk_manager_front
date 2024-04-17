@@ -26,10 +26,10 @@ export default function PageTriggerEvents() {
         <DataList>
           <DataListHeader>
             <DataListCell colName="type">Type</DataListCell>
-            <DataListCell colName="codeType" colWidth="4rem">
+            <DataListCell colName="codeType" colWidth="6rem">
               Code type
             </DataListCell>
-            <DataListCell colName="code" colWidth="4rem">
+            <DataListCell colName="code" colWidth="6rem">
               Code
             </DataListCell>
             <DataListCell colName="eventName" colWidth={2}>
@@ -46,7 +46,7 @@ export default function PageTriggerEvents() {
               Exposition naturelle résultante
             </DataListCell>
 
-            <DataListCell colName="comment" colWidth={4}>
+            <DataListCell colName="comment" colWidth={2}>
               Commentaire{' '}
             </DataListCell>
 
@@ -77,7 +77,7 @@ export default function PageTriggerEvents() {
                   {TriggerEvent?.code || ''}
                 </Text>
               </DataListCell>
-              <DataListCell colName="code">
+              <DataListCell colName="eventName">
                 <Text color="gray.600" fontSize="md">
                   {TriggerEvent?.event || ''}
                 </Text>

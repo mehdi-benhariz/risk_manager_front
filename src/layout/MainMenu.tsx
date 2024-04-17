@@ -12,7 +12,6 @@ export const MainMenu = ({ ...rest }) => {
       <MainMenuItem to="/actifssupport">Actifs support</MainMenuItem>
       <MainMenuItem to="/damagest">Dommages</MainMenuItem>
       <MainMenuItem to="/triggerevents">Trigger events</MainMenuItem>
-      <MainMenuItem to="/riskAnalysis">Analyse de risque</MainMenuItem>
       <MainMenuItem to="/riskSheets">Fiches de risque</MainMenuItem>
       {/* {isAdmin && (
         <MainMenuItem to="/admin">{t('layout:mainMenu.admin')}</MainMenuItem>
@@ -58,9 +57,9 @@ const MainMenuItem = ({ to, ...rest }: BoxProps & { to: string }) => {
         opacity: isActive ? 0.5 : 0,
         content: '""',
         position: 'absolute',
-        insetStart: { base: 8, md: '50%' },
+        insetStart: { base: 8, md: '10%' },
         bottom: '0.2em',
-        transform: rtlValue('translateX(-50%)', 'translateX(50%)'),
+        transform: rtlValue('translateX(0%)', 'translateX(50%)'),
         transition: '0.2s',
         w: isActive ? '70%' : 0,
         h: '2px',

@@ -18,9 +18,9 @@ const updateToken = (newToken?: string | null) => {
   }
 
   if (!newToken) {
-    localStorage.removeItem(AUTH_TOKEN_KEY);
+    sessionStorage.removeItem(AUTH_TOKEN_KEY);
   } else {
-    localStorage.setItem(AUTH_TOKEN_KEY, newToken);
+    sessionStorage.setItem(AUTH_TOKEN_KEY, newToken);
   }
 };
 
@@ -43,7 +43,7 @@ export const AuthProvider: FC<React.PropsWithChildren<unknown>> = ({
   children,
 }) => {
   const [token, setToken] = useState(
-    (isBrowser && localStorage.getItem(AUTH_TOKEN_KEY)) ?? null
+    (isBrowser && sessionStorage.getItem(AUTH_TOKEN_KEY)) ?? null
   );
 
   const handleUpdateToken = useCallback(
@@ -63,5 +63,4 @@ export const AuthProvider: FC<React.PropsWithChildren<unknown>> = ({
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-
 };

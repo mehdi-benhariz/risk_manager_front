@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   Avatar,
   Box,
@@ -7,7 +5,6 @@ import {
   Menu,
   MenuButton,
   MenuDivider,
-  MenuGroup,
   MenuItem,
   MenuList,
   Spinner,
@@ -16,15 +13,8 @@ import {
   useColorMode,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import {
-  LuCheck,
-  LuCopy,
-  LuLogOut,
-  LuMoon,
-  LuSun,
-  LuUser,
-} from 'react-icons/lu';
-import { Link, useNavigate } from 'react-router-dom';
+import { LuCheck, LuCopy, LuLogOut, LuMoon, LuSun } from 'react-icons/lu';
+import { useNavigate } from 'react-router-dom';
 
 import { Icon } from '@/components/Icons';
 import { useAccount } from '@/features/account/service';
@@ -118,16 +108,6 @@ export const AccountMenu = ({ ...rest }) => {
           </Avatar>
         </MenuButton>
         <MenuList maxW="12rem" overflow="hidden">
-          <MenuGroup title={account.data?.email} noOfLines={1}>
-            <MenuItem
-              as={Link}
-              to="/account"
-              icon={<Icon icon={LuUser} fontSize="lg" color="gray.400" />}
-            >
-              {t('layout:accountMenu.myAccount')}
-            </MenuItem>
-          </MenuGroup>
-          <MenuDivider />
           <MenuItem
             icon={
               <Icon

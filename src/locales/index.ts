@@ -8,4 +8,4 @@ import en from '@/locales/en';
 import fr from '@/locales/fr';
 import sw from '@/locales/sw';
 
-export default { en, fr, ar, sw } as const;
+export default { fr } as const;
