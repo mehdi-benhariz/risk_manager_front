@@ -40,7 +40,7 @@ export default function PageRiskAnalysis() {
     label: damage.name,
   }));
 
-  const triggerEventsOptions = triggerEvents?.map((event) => ({
+  const triggerEventsOptions = triggerEvents?.data?.map((event) => ({
     value: event.id,
     label: event.event,
   }));

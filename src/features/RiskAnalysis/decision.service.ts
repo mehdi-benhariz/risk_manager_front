@@ -13,7 +13,7 @@ export type DecisionType = {
 export const useDecision = () => {
   const api = useQuery(
     decisionFactoryKey.list(),
-    (): Promise<{ data: DecisionType[] }> => Axios.get('decision')
+    (): Promise<{ data: DecisionType[] }> => Axios.get('/decision/    ')
   );
 
   return { ...api, data: api?.data?.data || [] };
