@@ -1,19 +1,26 @@
+import { FC } from 'react';
+
 import { Heading, Stack, StackProps } from '@chakra-ui/react';
 import { FormizStep } from '@formiz/core';
 
+import { FieldHidden } from '@/components/FieldHidden';
 import { FieldInput } from '@/components/FieldInput';
 import { FieldSelect } from '@/components/FieldSelect';
 import { FieldTextarea } from '@/components/FieldTextarea';
 
-import { LevelsOptions } from './RiskDescriptionStep';
+import { LevelsOptions, OptionsType } from './RiskDescriptionStep';
 
 const StackParam = {
   direction: { base: 'column', md: 'row' },
   spacing: 4,
   mb: 4,
 } as StackProps;
-
-export const MinimiseRiskLevelStep = () => {
+type MinimiseRiskLevelStepProps = {
+  measureLevelsOptions: OptionsType[];
+};
+export const MinimiseRiskLevelStep: FC<MinimiseRiskLevelStepProps> = ({
+  measureLevelsOptions,
+}) => {
   return (
     <FormizStep name="step 2" order={2}>
       <Stack>
@@ -22,30 +29,31 @@ export const MinimiseRiskLevelStep = () => {
         <Heading size="lg">Mesures dissuasives</Heading>
         <Stack {...StackParam}>
           <FieldSelect
-            name="mesure_level"
+            name="measures[0].measure_level_id"
             label="Sélection du niveau de mesure"
+            options={measureLevelsOptions}
           />
-          {
-            // listing of mesure & helper is the mesure level desription
-          }
         </Stack>
         <Stack {...StackParam}>
-          {
-            // create mesur  and  assigne it to risque
-          }
+          <FieldHidden name="measures[0].type" defaultValue="DETERRENT" />
           <FieldTextarea
-            name="mesure"
+            name="measures[0].measure"
             label="Indiquez vos mesures mises en places"
           />
-          {
-            // handel the creation of the mesur and assigne the id of mesure to "mesure_id"
-          }
         </Stack>
         <Heading size="lg">Mesures préventives</Heading>
 
         <Stack {...StackParam}>
-          <FieldInput name="b5" label="Sélection du niveau de mesure" />
-          <FieldInput name="b6" label="Indiquez vos mesures mises en places" />
+          <FieldSelect
+            name="measures[1].measure_level_id"
+            label="Sélection du niveau de mesure"
+            options={measureLevelsOptions}
+          />
+          <FieldHidden name="measures[1].type" defaultValue="PREVENTIVE" />
+          <FieldInput
+            name="measures[1].measure"
+            label="Indiquez vos mesures mises en places"
+          />
         </Stack>
         <Stack {...StackParam}>
           <FieldSelect

@@ -1,6 +1,11 @@
 import { faker } from '@faker-js/faker';
-import { useQuery } from '@tanstack/react-query';
-import Axios from 'axios';
+import {
+  UseMutationOptions,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from '@tanstack/react-query';
+import Axios, { AxiosError } from 'axios';
 
 const ruskSheetsFactoryKey = {
   all: () => ['ruskSheets'],
@@ -66,3 +71,22 @@ export const useRiskSheetsList = ({ xField = '' }: { xField?: string }) =>
     (): Promise<{ data: RiskSheetsType[] }> =>
       Axios.get('/risk/', { headers: { 'X-Fields': xField } })
   );
+
+export const useAddRiskAnalysis = (
+  config: UseMutationOptions<any, AxiosError, any> = {}
+) => {
+  const queryClient = useQueryClient();
+  return useMutation(
+    async (payload: any) => {
+      await Axios.post('/risk/', payload);
+    },
+    {
+      onSuccess: (data, payload, ...rest) => {
+        queryClient.invalidateQueries(ruskSheetsFactoryKey.list());
+        if (config.onSuccess) {
+          config.onSuccess(data, payload, ...rest);
+        }
+      },
+    }
+  );
+};

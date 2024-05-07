@@ -1,24 +1,38 @@
 import { Box, Center, Spinner, useToast } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
+import { useNavigate } from 'react-router-dom';
 
 import { MultiStepsLayout } from '@/components/MultiStepsLayout';
 
 import { useActifsPrimairesList } from '../PageActifsPrimaires/AcrifsPromairesServices';
 import { useActifsSupportList } from '../PageActifsSupport/ActifsSupportServices';
 import { useDamagestList } from '../PageDamages/DamagesServices';
+import { useAddRiskAnalysis } from '../PageRiskSheets/RiskSheetsServices';
 import { useTriggerEventsList } from '../trigger event/TriggerEventServices';
 import { DecisionStep } from './DecisionStep';
 import { MesserRiskLevelStep } from './MesserRiskLevelStep';
 import { MinimiseRiskLevelStep } from './MinimiseRiskLevelStep';
 import { RiskDescriptionStep } from './RiskDescriptionStep';
-import { useDecision } from './decision.service';
+import { useDecision, useMeasureLevels } from './decision.service';
 
 export default function PageRiskAnalysis() {
   const toastValues = useToast();
+  const navigate = useNavigate();
+
+  const { mutate: createRiskAnalysis } = useAddRiskAnalysis({
+    onSuccess: () => {
+      navigate('/riskSheets');
+    },
+  });
   const { data, isLoading: isActifsPremairesLoading } =
     useActifsPrimairesList();
   const { data: decision, isLoading: isDecisionLoading } = useDecision();
 
+  const { data: measures, isLoading: isMeasuresLoading } = useMeasureLevels();
+  const measureLevelsOptions = measures?.map((measure) => ({
+    value: measure.id,
+    label: measure.level,
+  }));
   const { data: actifsSupport, isLoading: isActifsSupportLoading } =
     useActifsSupportList();
   console.log('ActifsSupport', actifsSupport);
@@ -47,6 +61,12 @@ export default function PageRiskAnalysis() {
 
   const form = useForm({
     onValidSubmit: (values) => {
+      values.measures = (values.measures || [])?.filter(
+        (measure: any) => !!measure?.measure && !!measure?.measure_level_id
+      );
+
+      createRiskAnalysis(values);
+
       toastValues({
         title: JSON.stringify(values, null, 2),
       });
@@ -76,8 +96,12 @@ export default function PageRiskAnalysis() {
                 damagesOptions={damagesOptions || []}
                 triggerEventsOptions={triggerEventsOptions || []}
               />
-              <MinimiseRiskLevelStep />
-              <MesserRiskLevelStep />
+              <MinimiseRiskLevelStep
+                measureLevelsOptions={measureLevelsOptions}
+              />
+              <MesserRiskLevelStep
+                measureLevelsOptions={measureLevelsOptions}
+              />
               <DecisionStep decision={decision} />
             </MultiStepsLayout>
           </Formiz>

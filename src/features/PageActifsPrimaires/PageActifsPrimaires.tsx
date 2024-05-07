@@ -43,7 +43,6 @@ export const ImpactLevel = ({ level }: { level: number }) => {
 export default function PageActifsPrimaires() {
   const actifsPrimaires = useActifsPrimairesList();
   const { data } = actifsPrimaires;
-  console.log({ data });
   return (
     <Page containerSize="xl">
       <PageContent>

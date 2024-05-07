@@ -3,7 +3,6 @@ import { FC } from 'react';
 import { Heading, Stack, StackProps } from '@chakra-ui/react';
 import { FormizStep } from '@formiz/core';
 
-import { FieldInput } from '@/components/FieldInput';
 import { FieldSelect } from '@/components/FieldSelect';
 
 const StackParam = {
@@ -12,16 +11,16 @@ const StackParam = {
   mb: 4,
 } as StackProps;
 
-type OprionsType = {
-  value: number;
-  label: string;
+export type OptionsType = {
+  value: Number;
+  label: String;
 };
 
 type RiskDescriptionStepProps = {
-  actifsSupportOptions?: OprionsType[];
-  optionActifsPrimaires?: OprionsType[];
-  damagesOptions?: OprionsType[];
-  triggerEventsOptions?: OprionsType[];
+  actifsSupportOptions?: OptionsType[];
+  optionActifsPrimaires?: OptionsType[];
+  damagesOptions?: OptionsType[];
+  triggerEventsOptions?: OptionsType[];
 };
 export const LevelsOptions = [
   { value: 1, label: '1 Non significatif' },
@@ -48,6 +47,7 @@ export const RiskDescriptionStep: FC<RiskDescriptionStepProps> = ({
         <Heading>1. Description du risque</Heading>
         <Stack {...StackParam}>
           <FieldSelect
+            required
             name="primary_actif_id"
             label="b. Actif primaire concerné"
             options={optionActifsPrimaires}
@@ -55,11 +55,13 @@ export const RiskDescriptionStep: FC<RiskDescriptionStepProps> = ({
         </Stack>
         <Stack {...StackParam}>
           <FieldSelect
+            required
             name="consequence_type"
             label="c. Type de conséquence (D,I,C,E)"
             options={typeConsequenceOptions}
           />
           <FieldSelect
+            required
             name="support_actif_id"
             label="d. Actif support concerné"
             options={actifsSupportOptions}
@@ -67,11 +69,13 @@ export const RiskDescriptionStep: FC<RiskDescriptionStepProps> = ({
         </Stack>
         <Stack {...StackParam}>
           <FieldSelect
+            required
             name="intrinsic_impact"
             label="Impact intrinsèque (Ii)"
             options={LevelsOptions}
           />
           <FieldSelect
+            required
             name="personalized_intrinsic_impact"
             label="Impact intrinsèque personnalisé (Ii*)"
             options={LevelsOptions}
@@ -79,11 +83,13 @@ export const RiskDescriptionStep: FC<RiskDescriptionStepProps> = ({
         </Stack>
         <Stack {...StackParam}>
           <FieldSelect
+            required
             name="damage_id"
             label="e. Type de dommage"
             options={damagesOptions}
           />
           <FieldSelect
+            required
             name="trigger_event_id"
             label="f. Type d'événement déclencheur"
             options={triggerEventsOptions}
@@ -91,13 +97,9 @@ export const RiskDescriptionStep: FC<RiskDescriptionStepProps> = ({
         </Stack>
         <Stack {...StackParam}>
           <FieldSelect
+            required
             name="intrinsic_potential"
             label="Potentialité intrinsèque (Pi)"
-            options={LevelsOptions}
-          />
-          <FieldSelect
-            name="a11"
-            label="Potentialité intrinsèque personnalisé (Pi*)"
             options={LevelsOptions}
           />
         </Stack>

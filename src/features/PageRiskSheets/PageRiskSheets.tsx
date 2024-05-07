@@ -71,7 +71,6 @@ export default function PageRiskSheets() {
   const { data, isLoading, refetch, isError, isSuccess } = useRiskSheetsList({
     xField,
   });
-  console.log(data?.data);
 
   return (
     <Page containerSize="xl">

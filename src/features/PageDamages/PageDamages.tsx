@@ -15,7 +15,6 @@ import { useDamagestList } from './DamagesServices';
 
 export default function PageDamagest() {
   const damages = useDamagestList();
-  console.log(damages);
   return (
     <Page containerSize="xl">
       <PageContent>

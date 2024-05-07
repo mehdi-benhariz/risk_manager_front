@@ -22,11 +22,10 @@ export const DecisionStep: FC<DecisionStepProps> = ({ decision }) => {
       <Stack>
         <Heading>3. Décision</Heading>
         <FieldSelect
-          name="dd1"
+          name="decision_id"
           label="Décision prise"
           options={decisionOptions}
         />
-        <FieldTextarea name="d1" label="Décision prise" />
         <Heading>4. Commentaire</Heading>
         <FieldTextarea
           name="comment"
