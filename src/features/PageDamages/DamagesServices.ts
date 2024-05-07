@@ -4,6 +4,7 @@ import Axios from 'axios';
 const actifsPrimairesFactoryKey = {
   all: () => ['actifsPrimaires'],
   list: () => [...actifsPrimairesFactoryKey.all(), 'list'],
+  damage: () => ['damage'],
 };
 
 type DamagestType = {
@@ -18,7 +19,7 @@ type DamagestType = {
 
 export const useDamagestList = () =>
   useQuery(
-    actifsPrimairesFactoryKey.list(),
+    actifsPrimairesFactoryKey.damage(),
     async (): Promise<DamagestType[]> => {
       const response = await Axios.get('/damage/');
       return response?.data;

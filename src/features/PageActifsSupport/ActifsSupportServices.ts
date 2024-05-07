@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import Axios from 'axios';
 
-const actifsPrimairesFactoryKey = {
-  all: () => ['actifsPrimaires'],
-  list: () => [...actifsPrimairesFactoryKey.all(), 'list'],
+const actifsSupportFactoryKey = {
+  all: () => ['actifSupports'],
+  list: () => [...actifsSupportFactoryKey.all(), 'list'],
 };
 
 type ActifsSupportType = {
@@ -16,7 +16,7 @@ type ActifsSupportType = {
 
 export const useActifsSupportList = () =>
   useQuery(
-    actifsPrimairesFactoryKey.list(),
+    actifsSupportFactoryKey.list(),
     async (): Promise<ActifsSupportType[]> => {
       const response = await Axios.get('/support_actif/');
       return response?.data;

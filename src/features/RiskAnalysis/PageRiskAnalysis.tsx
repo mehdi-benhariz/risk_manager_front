@@ -19,9 +19,9 @@ export default function PageRiskAnalysis() {
     useActifsPrimairesList();
   const { data: decision, isLoading: isDecisionLoading } = useDecision();
 
-  const { data: ActifsSupport, isLoading: isActifsSupportLoading } =
+  const { data: actifsSupport, isLoading: isActifsSupportLoading } =
     useActifsSupportList();
-
+  console.log('ActifsSupport', actifsSupport);
   const { data: damages, isLoading: isDamagesLoading } = useDamagestList();
   const { data: triggerEvents, isLoading: isTriggerEventsLoading } =
     useTriggerEventsList();
@@ -30,7 +30,7 @@ export default function PageRiskAnalysis() {
     value: actif.id,
     label: actif.description,
   }));
-  const actifsSupportOptions = ActifsSupport?.map((actif) => ({
+  const actifsSupportOptions = actifsSupport?.map((actif) => ({
     value: actif.id,
     label: actif.name,
   }));
